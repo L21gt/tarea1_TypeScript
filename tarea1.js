@@ -104,4 +104,88 @@ function limpiarNombres(nombres) {
 const nombres = [" Alice ", "  ", "Bob", "", "  Charlie  "];
 const nombresLimpia = limpiarNombres(nombres);
 console.log(nombresLimpia); // ["Alice", "Bob", "Charlie"]
+// ----------------------------------------------------------------------------
+// Ejercicio 9 - Mezcla segura (uniones)
+siguienteEjercicio();
+function soloStrings(valores) {
+    return valores
+        .filter(v => typeof v === 'string')
+        .map(s => s.toUpperCase());
+}
+// pruebas
+const mezcla = [1, "hello", 2, "world", "TypeScript", 3];
+const soloStrs = soloStrings(mezcla);
+console.log(soloStrs); // ["HELLO", "WORLD", "TYPESCRIPT"]
+// ----------------------------------------------------------------------------
+// Ejercicio 10 - Tupla resultado de división
+siguienteEjercicio();
+function dividirTS(a, b) {
+    if (b === 0) {
+        return [0, false];
+    }
+    else {
+        return [a / b, true];
+    }
+}
+// pruebas
+const [resultado1, exito1] = dividirTS(10, 2);
+console.log(`[${resultado1}, ${exito1}]`); // Resultado: 5, Exito: true
+const [resultado2, exito2] = dividirTS(10, 0);
+console.log(`[${resultado2}, ${exito2}]`); // Resultado: Infinity, Exito: false
+// ----------------------------------------------------------------------------
+// Ejercicio 11 - Cuenta bancaria (encapsulación)
+siguienteEjercicio();
+class Cuenta {
+    constructor() {
+        this.saldo = 0;
+    }
+    depositar(monto) {
+        if (monto > 0) {
+            this.saldo += monto;
+        }
+    }
+    retirar(monto) {
+        if (monto > 0 && monto <= this.saldo) {
+            this.saldo -= monto;
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    getSaldo() {
+        return this.saldo;
+    }
+}
+// pruebas
+// Crea una instancia de la clase Cuenta
+const miCuenta = new Cuenta();
+// Prueba de depósito
+console.log(`Saldo inicial: ${miCuenta.getSaldo()}`); // Salida esperada: Saldo inicial: 0
+miCuenta.depositar(100);
+console.log(`Saldo después de depositar 100: ${miCuenta.getSaldo()}`); // Salida esperada: Saldo después de depositar 100: 100
+// Prueba de retiro exitoso
+const retiroExitoso = miCuenta.retirar(50);
+console.log(`Retiro de 50 exitoso: ${retiroExitoso}`); // Salida esperada: Retiro de 50 exitoso: true
+console.log(`Saldo después de retirar 50: ${miCuenta.getSaldo()}`); // Salida esperada: Saldo después de retirar 50: 50
+// Prueba de retiro fallido (saldo insuficiente)
+const retiroFallido = miCuenta.retirar(100);
+console.log(`Intento de retirar 100 fallido: ${retiroFallido}`); // Salida esperada: Intento de retirar 100 fallido: false
+console.log(`Saldo después de intento fallido: ${miCuenta.getSaldo()}`); // Salida esperada: Saldo después de intento fallido: 50
+// ----------------------------------------------------------------------------
+// Ejercicio 12 - Usuario con atajos de constructor
+siguienteEjercicio();
+class Usuario {
+    constructor(nombre, edad, correo) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.correo = correo;
+    }
+    getEdad() {
+        return this.edad;
+    }
+}
+// pruebas
+const usuario = new Usuario("Charlie", 28, "charlie@test.com");
+console.log(`Edad: ${usuario.getEdad()}`); // Salida esperada: Edad: 28
 //# sourceMappingURL=tarea1.js.map
