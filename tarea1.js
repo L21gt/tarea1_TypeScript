@@ -51,4 +51,57 @@ console.log(saludar());
 // ----------------------------------------------------------------------------
 // Ejercicio 4 - Suma variable (rest)
 siguienteEjercicio();
+function sumarLista(...nums) {
+    return nums.reduce((acc, val) => acc + val, 0);
+}
+// pruebas
+console.log(`sumarLista(1, 2, 3) = ${sumarLista(1, 2, 3)}`);
+console.log(`sumarLista() = ${sumarLista()}`);
+console.log(`sumarLista(5, 10, 15, 20) = ${sumarLista(5, 10, 15, 20)}`);
+// ----------------------------------------------------------------------------
+// Ejercicio 5 - Modelo de producto
+siguienteEjercicio();
+function aplicarDescuento(p) {
+    return p.descuento ? p.precio - p.descuento : p.precio;
+}
+// pruebas
+const prod1 = { id: 1, nombre: "Laptop", precio: 1000, descuento: 200 };
+const prod2 = { id: 2, nombre: "Mouse", precio: 50 };
+console.log(`Precio de ${prod1.nombre}: $${prod1.precio}`);
+console.log(`Descuento a aplicar a ${prod1.nombre}: $${prod1.descuento}`);
+console.log(`Precio final de ${prod1.nombre}: $${aplicarDescuento(prod1)}`);
+console.log(`Precio de ${prod2.nombre}: $${prod2.precio}`);
+console.log(`Precio final de ${prod2.nombre}: $${aplicarDescuento(prod2)}`);
+// ----------------------------------------------------------------------------
+// Diccionario de errores (index signature)
+siguienteEjercicio();
+function agregarError(dic, codigo, mensaje) {
+    dic[codigo] = mensaje;
+}
+// pruebas
+const d = {};
+agregarError(d, "404", "No encontrado");
+d["404"] === "No encontrado";
+console.log(d);
+// ----------------------------------------------------------------------------
+// Ejercicio 7 - Cliente con dirección (interfaces anidadas)
+siguienteEjercicio();
+function formatearCliente(c) {
+    return `${c.nombre} (${c.direccion.ciudad}): ${c.direccion.calle}` + (c.edad ? `, Edad: ${c.edad}` : '');
+}
+// pruebas
+const cliente1 = { nombre: "Bob", direccion: { calle: "Calle 123", ciudad: "CiudadX" }, edad: 30 };
+const cliente2 = { nombre: "Eve", direccion: { calle: "Avenida 456", ciudad: "CiudadY" } };
+console.log(formatearCliente(cliente1));
+console.log(formatearCliente(cliente2));
+// ----------------------------------------------------------------------------
+// Ejercicio 8 - Limpieza de nombres
+siguienteEjercicio();
+function limpiarNombres(nombres) {
+    return nombres.map(n => n.trim()).filter(n => n.length > 0);
+}
+// pruebas
+const nombres = [" Alice ", "  ", "Bob", "", "  Charlie  "];
+const nombresLimpia = limpiarNombres(nombres);
+console.log(nombresLimpia); // ["Alice", "Bob", "Charlie"]
 //# sourceMappingURL=tarea1.js.map
