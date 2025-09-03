@@ -188,4 +188,102 @@ class Usuario {
 // pruebas
 const usuario = new Usuario("Charlie", 28, "charlie@test.com");
 console.log(`Edad: ${usuario.getEdad()}`); // Salida esperada: Edad: 28
+// ----------------------------------------------------------------------------
+// Ejercicio 13 - Herencia de vehículo
+siguienteEjercicio();
+class Vehiculo {
+    constructor(marca, modelo) {
+        this.marca = marca;
+        this.modelo = modelo;
+    }
+    encender() {
+        return `${this.marca} ${this.modelo} esta encendido.`;
+    }
+}
+class Auto extends Vehiculo {
+    constructor(marca, modelo, puertas) {
+        super(marca, modelo); // Llama al constructor de la clase base
+        this.puertas = puertas;
+    }
+    tocarBocina() {
+        return "Honk! Honk!";
+    }
+}
+class Moto extends Vehiculo {
+    constructor(marca, modelo, cc) {
+        super(marca, modelo); // Llama al constructor de la clase base
+        this.cc = cc;
+    }
+    hacerCaballito() {
+        return `${this.marca}  ${this.modelo} esta haciendo un caballito!`;
+    }
+}
+// pruebas
+const miAuto = new Auto("Toyota", "Corolla", 4);
+const miMoto = new Moto("Yamaha", "R3", 321);
+console.log(miAuto.encender());
+console.log(miAuto.tocarBocina());
+console.log(miMoto.encender());
+console.log(miMoto.hacerCaballito());
+// ----------------------------------------------------------------------------
+// Ejercicio 14 - Clase abstracta Animal
+siguienteEjercicio();
+class Animal {
+    constructor(nombre) {
+        this.nombre = nombre;
+    }
+    mover() {
+        return `${this.nombre} se esta moviendo.`;
+    }
+}
+class Perro extends Animal {
+    sonido() {
+        return "Guau! Guau!";
+    }
+}
+class Gato extends Animal {
+    sonido() {
+        return "Miau! Miau!";
+    }
+}
+function presentar(a) {
+    return `${a.nombre} hace: ${a.sonido()} y ${a.mover()}`;
+}
+// pruebas
+const firulais = new Perro("Firulais");
+const michi = new Gato("Michi");
+console.log(presentar(firulais));
+console.log(presentar(michi));
+// ----------------------------------------------------------------------------
+// Ejercicio 15 - Polimorfismo de Figuras
+siguienteEjercicio();
+class Figura {
+}
+class Rectangulo extends Figura {
+    constructor(largo, ancho) {
+        super();
+        this.largo = largo;
+        this.ancho = ancho;
+    }
+    area() {
+        return this.largo * this.ancho;
+    }
+}
+class Circulo extends Figura {
+    constructor(radio) {
+        super();
+        this.radio = radio;
+    }
+    area() {
+        return Math.PI * this.radio * this.radio;
+    }
+}
+function imprimirArea(f) {
+    return `Area: ${f.area()}`;
+}
+// pruebas
+const miRectangulo = new Rectangulo(5, 3);
+const miCirculo = new Circulo(4);
+console.log(imprimirArea(miRectangulo));
+console.log(imprimirArea(miCirculo));
 //# sourceMappingURL=tarea1.js.map
